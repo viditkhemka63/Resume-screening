@@ -14,10 +14,22 @@ import wget
 
 url = 'https://viditkhemka00.s3.amazonaws.com/Vidit.pdf'  
 
+def serializeJSON(json_data):
+    result = {}
+
+    for key in list(json_data.keys()):
+        if type(json_data[key]) == type([]):
+           result[key] = "$".join(json_data[key])
+        else:
+          result[key] = str(json_data[key])
+
+    return result
+
 def parseResume(url):
     fileName = downloadFile(url)
     data = extractInfo(fileName)
-    data['resume'] = extract_text_from_pdf(fileName)
+    # data['resume'] = extract_text_from_pdf(fileName)
+    data = serializeJSON(data)
     return data
 
 def downloadFile(url):
