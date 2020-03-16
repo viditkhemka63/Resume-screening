@@ -3,14 +3,8 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 var resumeSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required:true
-    },
+    name: { type: String },
+    email: { type: String },
     mobile_number: {type: Number}, 
     skills: {type: String}, 
     college_name: {type: String}, 

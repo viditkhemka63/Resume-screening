@@ -4,6 +4,7 @@ import logger from 'morgan';
 import path from 'path';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import 'dotenv/config';
 
 import indexRouter from './routes/index';
 import resumeRouter from './routes/resume';
@@ -21,8 +22,7 @@ app.use(bodyParser.json())
 //   res.end(JSON.stringify(req.body, null, 2))
 // })
 
-var dbUri = 'mongodb+srv://M44:admin123@cluster0-nfbuw.mongodb.net/test?retryWrites=true&w=majority';
-mongoose.connect(dbUri,(err) => {
+mongoose.connect(process.env.DBURI,(err) => {
   if(err) throw err;
 
   console.log('database connected ');

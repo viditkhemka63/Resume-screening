@@ -11,8 +11,17 @@ from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFSyntaxError
 import wget
+import pdfx
+
 
 url = 'https://viditkhemka00.s3.amazonaws.com/Vidit.pdf'  
+
+def extractLink(path):
+    pdf = pdfx.PDFx(path)
+    urls =  pdf.get_references_as_dict()
+    if 'url' in list(urls.keys()):
+        return urls[url]
+    return []
 
 def serializeJSON(json_data):
     result = {}

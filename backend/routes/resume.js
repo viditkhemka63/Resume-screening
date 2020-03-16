@@ -4,8 +4,19 @@ import Resume from '../schema/resume';
 import axios from 'axios';
 
 
+const parserResume = async(url) => {
+    const resp = await axios.post('http://localhost:5000/prediction', {
+        url
+    })
+    console.log(resp.data);
+    return resp.data
+}
+
+
 router.post('/insert', async(req, res) => {
     console.log(req.body);
+
+    let data = await parserResume(req.body.url);
     
     const { name, 
         email, 
@@ -17,7 +28,7 @@ router.post('/insert', async(req, res) => {
         experience, 
         no_of_pages, 
         company_names, 
-        total_experience} = req.body
+        total_experience} = data
 
     var resume = new Resume({
         name,
@@ -33,18 +44,26 @@ router.post('/insert', async(req, res) => {
         total_experience
     })
     const result = await resume.save()
-    
+    console.log(result)
     res.json(result)
 })
 
-router.post('/getPost', async(req, res) => {
-    var url = req.body.url;
-
-    const resp = await axios.post('http://localhost:5000/prediction', {
-        url
-    })
-    console.log(resp.data);
-    res.json(resp.data)
+router.post('/getAll', async(req, res) => {
+    const data = await Resume.find({});
+    console.log(data)
+    res.json(data)
 })
+
+
+router.post('/query', async(req, res) => {
+    console.log(req.body)
+    const {query, value} = req.body;
+  
+    
+    const data = await Resume.find({[query]: value});
+    console.log(data)
+    res.json(data)
+})
+
 
 module.exports = router;
