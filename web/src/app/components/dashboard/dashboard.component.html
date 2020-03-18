@@ -1,10 +1,50 @@
 <app-navbar></app-navbar>
+<br>
+<br>
+<br>
+  
+<div class="container">
 
-<p>dashboard works!</p>
-
-<div class="row">
-    <div class="col-5">
-        <div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
+    <div class="row">
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <div style="display: block;">
+                    <canvas baseChart 
+                      [data]="pieChartData" 
+                      [labels]="pieChartLabels" 
+                      [chartType]="pieChartType"
+                      [options]="pieChartOptions"
+                      [plugins]="pieChartPlugins"
+                      [legend]="pieChartLegend">
+                    </canvas>
+                  </div>
+                <div class="card-body">
+                  <h5 class="card-title center">Skills stats</h5>
+                </div>
+              </div>
+        </div>
+    
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <div style="display: block;">
+                    <canvas baseChart 
+                      [data]="pieChartData" 
+                      [labels]="pieChartLabels" 
+                      [chartType]="pieChartType"
+                      [options]="pieChartOptions"
+                      [plugins]="pieChartPlugins"
+                      [legend]="pieChartLegend">
+                    </canvas>
+                  </div>
+                <div class="card-body">
+                  <h5 class="card-title center">Skills stats</h5>
+                </div>
+              </div>
+        </div>
+        
     </div>
+
+    <br>
+
+    <app-table></app-table>
 </div>
-<app-table></app-table>
