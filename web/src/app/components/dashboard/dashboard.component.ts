@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartType, ChartOptions } from 'chart.js';
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
 
 
@@ -10,15 +10,33 @@ import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsToolt
 })
 export class DashboardComponent implements OnInit {
 
-  public pieChartOptions: ChartOptions = {
+  public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public pieChartLabels: Label[] = [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'];
-  public pieChartData: SingleDataSet = [300, 500, 100];
-  public pieChartType: ChartType = 'pie';
-  public pieChartLegend = false;
-  public pieChartPlugins = [];
+  public barChartLabels: Label[] = ['Skills'];
+  public barChartType: ChartType = 'bar';
+  public barChartLegend = true;
+  public barChartPlugins = [];
 
+  public barChartData: ChartDataSets[] = [
+    {data: [300], label: 'Docker'},
+    {data: [500], label: 'Angular'},
+    {data: [200], label: 'AWS'},
+    {data: [250], label: 'SQL'},
+    {data: [0], label: ''},
+  ];
+
+    // Pie
+    public pieChartOptions: ChartOptions = {
+      responsive: true,
+    };
+    public pieChartLabels: Label[] = ['2 yr', '3 yr', '5 yr'];
+    public pieChartData: SingleDataSet = [30, 50, 10];
+    public pieChartType: ChartType = 'pie';
+    public pieChartLegend = true;
+    public pieChartPlugins = [];
+  
+  
   constructor() {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();

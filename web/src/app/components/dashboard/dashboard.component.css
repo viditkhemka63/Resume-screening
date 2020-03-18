@@ -1,0 +1,18 @@
+.page-title {
+    font-size: 24px;
+    font-weight: 300;
+    color: #313b3d;
+    letter-spacing: 0;
+    margin-right: 30px;
+}
+
+.chart-container{
+    padding-left: 50px;
+    padding-top: 100px;
+    padding-right: 50px;
+}
+
+.col-4 {
+    flex: 0 0 33.33333%;
+    max-width: 50.33333%;
+}

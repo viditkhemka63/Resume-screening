@@ -1,13 +1,33 @@
 <app-navbar></app-navbar>
-<br>
-<br>
-<br>
-  
-<div class="container">
 
+<div class="chart-container">
     <div class="row">
         <div class="col-4">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 40rem;">
+                
+                <div style="display: block;">
+                    <canvas baseChart 
+                        [datasets]="barChartData"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [plugins]="barChartPlugins"
+                        [legend]="barChartLegend"
+                        [chartType]="barChartType">
+                    </canvas>
+                    </div>
+                    
+                    
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <span  class="page-title">Skills Dashboard</span>
+                    </h5>
+                </div>
+                </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card" style="width: 40rem;">
+                
                 <div style="display: block;">
                     <canvas baseChart 
                       [data]="pieChartData" 
@@ -17,34 +37,26 @@
                       [plugins]="pieChartPlugins"
                       [legend]="pieChartLegend">
                     </canvas>
-                  </div>
-                <div class="card-body">
-                  <h5 class="card-title center">Skills stats</h5>
                 </div>
-              </div>
+                  
+                    
+                    
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <span  class="page-title">Experience Dashboard</span>
+                    </h5>
+                </div>
+                </div>
         </div>
     
-        <div class="col-4">
-            <div class="card" style="width: 18rem;">
-                <div style="display: block;">
-                    <canvas baseChart 
-                      [data]="pieChartData" 
-                      [labels]="pieChartLabels" 
-                      [chartType]="pieChartType"
-                      [options]="pieChartOptions"
-                      [plugins]="pieChartPlugins"
-                      [legend]="pieChartLegend">
-                    </canvas>
-                  </div>
-                <div class="card-body">
-                  <h5 class="card-title center">Skills stats</h5>
-                </div>
-              </div>
-        </div>
-        
     </div>
+</div>
+<div class="container">
 
     <br>
 
     <app-table></app-table>
+    <br>
+    <br>
+
 </div>
