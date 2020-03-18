@@ -1,0 +1,41 @@
+.bg {
+    /* The image used */
+    background-image: url("src/assets/images/login.jpg");
+  
+    /* Full height */
+    height: auto;
+    min-height: 100vh;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+
+.page-header {
+    padding: 15vh 0!important;
+}
+
+.myfront {
+    background: linear-gradient(60deg,#ec407a,#d81b60);
+}
+
+.card {
+    margin: 0 15px;
+    padding: 0;
+    position: relative;
+    min-height: 50px;
+    
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #eee;
+    border-radius: .25rem;
+}
+
+
