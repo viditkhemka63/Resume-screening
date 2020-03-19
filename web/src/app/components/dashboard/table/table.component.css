@@ -5,3 +5,11 @@ table {
   th.mat-sort-header-sorted {
     color: black;
   }
+
+.menu-container{
+  padding-left: 20px;
+}
+
+.my-primary{
+  color: #00695C;
+}

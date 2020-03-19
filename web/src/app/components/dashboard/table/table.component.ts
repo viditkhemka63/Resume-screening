@@ -12,11 +12,9 @@ export interface PeriodicElement {
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Vidit Khemka', email: 'viditkhemka63@gmail.com', phoneNo: 8800714404, performance: 100},
-  {position: 2, name: 'Anchal Gupta', email: 'viditkhemka63@gmail.com', phoneNo: 8800714404 , performance: 0},
-  {position: 3, name: 'Shweta Mamgain', email: 'viditkhemka63@gmail.com', phoneNo: 8800714404, performance: 90},
-  {position: 4, name: 'Bharat bhalla', email: 'viditkhemka63@gmail.com', phoneNo: 8800714404, performance: 20},
-  {position: 5, name: 'Ansh Gupta', email: 'viditkhemka63@gmail.com', phoneNo: 8800714404, performance: 10},
-  
+  {position: 2, name: 'Anchal Gupta', email: 'viditkhemka63@gmail.com', phoneNo: 8800714404 , performance: 20},
+  {position: 3, name: 'Shweta Mamgain', email: 'viditkhemka63@gmail.com', phoneNo: 8800714404, performance: 80},
+  {position: 4, name: 'Bharat bhalla', email: 'viditkhemka63@gmail.com', phoneNo: 8800714404, performance: 20}  
 ];
 
 

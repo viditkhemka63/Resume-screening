@@ -7,10 +7,17 @@
 }
 
 .chart-container{
-    padding-left: 50px;
+    padding-left: 100px;
     padding-top: 100px;
     padding-right: 50px;
 }
+
+.my-container{
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-right: 50px;
+}
+
 
 .col-4 {
     flex: 0 0 33.33333%;

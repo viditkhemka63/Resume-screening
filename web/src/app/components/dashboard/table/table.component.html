@@ -1,6 +1,24 @@
 <h3>Resume Performance</h3>
 
 
+<div class="row menu-container">
+    <button type="button" class="btn my-primary">All</button>
+  
+    <button type="button" class="btn">Uploaded</button>
+
+    <button type="button" class="btn">Web</button>
+    <div class="col-4">
+      <div class="bmd-form-group bmd-collapse-inline pull-xs-right">
+        <button class="btn bmd-btn-icon" for="search" data-toggle="collapse" data-target="#collapse-search" aria-expanded="false" aria-controls="collapse-search">
+          <i class="material-icons">search</i>
+        </button>  
+        <span id="collapse-search" class="collapse">
+          <input class="form-control" type="text" id="search" placeholder="search ...">
+        </span>
+      </div>
+    </div>
+</div>
+
 <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
 
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
