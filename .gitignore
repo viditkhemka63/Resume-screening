@@ -1,3 +1,4 @@
 backend/node_modules
 nlp/clustering/2
 web/node_modules
+backend/.env
