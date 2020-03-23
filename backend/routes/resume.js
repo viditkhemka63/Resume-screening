@@ -5,8 +5,9 @@ import axios from 'axios';
 
 
 const parserResume = async(url) => {
+    console.log(url)
     const resp = await axios.post('http://localhost:5000/prediction', {
-        url
+        "url": url
     })
     console.log(resp.data);
     return resp.data
@@ -14,10 +15,10 @@ const parserResume = async(url) => {
 
 
 router.post('/insert', async(req, res) => {
-    console.log(req.body);
-
+    console.log(req.body)
     let data = await parserResume(req.body.url);
-    
+    console.log('data is ')
+    console.log(data)
     const { name, 
         email, 
         mobile_number, 
@@ -28,9 +29,13 @@ router.post('/insert', async(req, res) => {
         experience, 
         no_of_pages, 
         company_names, 
-        total_experience} = data
+        total_experience,
+        resume} = data
+    console.log(data.email)
+    console.log(name)
 
-    var resume = new Resume({
+
+    var myresume = new Resume({
         name,
         email,
         mobile_number,
@@ -41,16 +46,18 @@ router.post('/insert', async(req, res) => {
         experience,
         no_of_pages,
         company_names,
-        total_experience
+        total_experience,
+        resume
     })
-    const result = await resume.save()
+    const result = await myresume.save()
+    console.log('result is ')
     console.log(result)
     res.json(result)
 })
 
 router.post('/getAll', async(req, res) => {
     const data = await Resume.find({});
-    console.log(data)
+    console.log(data.length)
     res.json(data)
 })
 

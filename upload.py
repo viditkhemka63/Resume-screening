@@ -2,6 +2,7 @@ import requests
 import os
 import json
 from pprint import pprint
+import time
 
 f = []
 for (dirpath, dirnames, filenames) in os.walk('./dataset/'):
@@ -10,13 +11,13 @@ for (dirpath, dirnames, filenames) in os.walk('./dataset/'):
 print(f)
 
 
-url = 'http://localhost:5000/prediction'
-
-myobj = {
-	"url": "https://viditkhemka00.s3.amazonaws.com/Vidit.pdf"
-}
-data = json.dumps(myobj)
-
-x = requests.post(url, data = data)
-print(x.json())
+url = 'http://localhost:3000/insert'
+for i in range(56):
+    myobj = {
+        "url": str(i)
+    }
+    data = json.dumps(myobj)
+    print(data)
+    x = requests.post(url, data = myobj)
+    print(x.json())
 

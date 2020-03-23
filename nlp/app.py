@@ -4,7 +4,7 @@ import numpy as np
 import json
 import time
 from clustering.clustering import getVector,predict_classification
-# from resumeParser import parseResume
+from resumeParser import parseResume
 
 # import hindi modules
 
