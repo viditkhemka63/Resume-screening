@@ -3,7 +3,9 @@ import tornado.ioloop
 import tornado.web
 import json
 
-import tensorflow as tf
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import tensorflow_hub as hub
 
 module_url = "./2/" #@param ["https://tfhub.dev/google/universal-sentence-encoder/2", "https://tfhub.dev/google/universal-sentence-encoder-large/3"]
