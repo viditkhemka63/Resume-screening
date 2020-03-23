@@ -44,6 +44,6 @@ def predict_classification(train, test_row, num_neighbors):
     return output_values
 
 
-sent = ['I love machine learning ', 'machine lear  ning is fun', 'covid-19 is very dangerous', 'deep learning requires more data']
-vec = getVector(sent)
-print(predict_classification(vec[1:], vec[0], 2))
+# sent = ['I love machine learning and covid-19 ', 'machine learning is fun', 'covid-19 is very dangerous', 'deep learning requires more data']
+# vec = getVector(sent)
+# print(predict_classification(vec[1:], vec[0], 2))
