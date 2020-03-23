@@ -37,8 +37,9 @@ def serializeJSON(json_data):
 def parseResume(url):
     fileName = downloadFile(url)
     data = extractInfo(fileName)
-    # data['resume'] = extract_text_from_pdf(fileName)
+    data['resume'] = pdf_to_text(fileName)
     data = serializeJSON(data)
+    os.remove(fileName)
     return data
 
 def downloadFile(url):
@@ -50,6 +51,14 @@ def downloadFile(url):
 def extractInfo(path):
     data = ResumeParser(path).get_extracted_data()
     return data
+
+def pdf_to_text(path):
+    mygen = extract_text_from_pdf(path)
+    resume = []
+    for item in mygen:
+        resume.append(item)
+
+    return ' '.join(resume)
 
 def extract_text_from_pdf(pdf_path):
     
