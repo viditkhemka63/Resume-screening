@@ -55,7 +55,7 @@ router.post('/insert', async(req, res) => {
     res.json(result)
 })
 
-router.post('/getAll', async(req, res) => {
+router.get('/getAll', async(req, res) => {
     const data = await Resume.find({});
     console.log(data.length)
     res.json(data)

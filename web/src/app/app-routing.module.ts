@@ -1,3 +1,4 @@
+import { ShowResumeComponent } from './components/show-resume/show-resume.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'showResume', component: ShowResumeComponent}
 
 ];
 
