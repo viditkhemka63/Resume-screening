@@ -4,6 +4,7 @@ import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsToolt
 
 import { ResumeAPIService } from '../../services/resume-api.service';
 import { Subscription } from 'rxjs';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,16 @@ import { Subscription } from 'rxjs';
 export class DashboardComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
-  resumeList
+  requirementForm: FormGroup;
+  skills;
+  resumeList;
+  expList
+
+  isdataFetch:boolean = false;
+  isrequirementFetch: boolean = false;
+  nothingtoShow: boolean = true;
+
+  
 
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -23,41 +33,89 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public barChartLegend = true;
   public barChartPlugins = [];
 
-  public barChartData: ChartDataSets[] = [
-    {data: [300], label: 'Docker'},
-    {data: [500], label: 'Angular'},
-    {data: [200], label: 'AWS'},
-    {data: [250], label: 'SQL'},
-    {data: [0], label: ''},
-  ];
-
+  public barChartData: ChartDataSets[] =[]
     // Pie
-    public pieChartOptions: ChartOptions = {
+  public pieChartOptions: ChartOptions = {
       responsive: true,
-    };
-    public pieChartLabels: Label[] = ['2 yr', '3 yr', '5 yr'];
-    public pieChartData: SingleDataSet = [30, 50, 10];
-    public pieChartType: ChartType = 'pie';
-    public pieChartLegend = true;
-    public pieChartPlugins = [];
+  };
+  public pieChartLabels: Label[] = []
+  public pieChartData: SingleDataSet = [];
+  public pieChartType: ChartType = 'pie';
+  public pieChartLegend = true;
+  public pieChartPlugins = [];
   
   
   constructor(
-    private resumeAPI: ResumeAPIService
+    private resumeAPI: ResumeAPIService,
+    private fb: FormBuilder
   ) {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
   }
 
   ngOnInit() {
-    this.subscription = this.resumeAPI.getAll().subscribe(data => {
-        this.resumeList = data
-        console.log(data)
+
+    this.requirementForm = this.fb.group({
+      requirement: ['', Validators.required],
+      noOfResume:  ['', Validators.required]
     })
+    
   }
   
+
+  onSubmit(){
+    if (this.requirementForm.valid){
+      this.nothingtoShow = false;
+      this.isdataFetch = false;
+      this.isrequirementFetch = true;
+      console.log(this.requirementForm.value)
+      this.resumeAPI.predict(this.requirementForm.value).subscribe(data => {
+        console.log(data)
+        this.skills = data.skills;
+        this.expList = data.Experience;
+        this.resumeList = data.result
+        this.update()
+      })
+    }
+  }
+  
+  update(){
+      this.isrequirementFetch = false;
+      this.isdataFetch = true;
+      this.updateBarChart();
+      this.updatePieChart();
+
+  }
+
+  updateBarChart(){
+    this.barChartData = []
+    this.skills.forEach(element => {
+      this.barChartData.push({
+        data: [element.value],
+        label: element.key 
+      })
+    });
+    this.barChartData.push({
+      data:[0],
+      label: ''
+    })
+    console.log(this.barChartData);
+  }
+
+  updatePieChart(){
+    this.pieChartLabels = []
+    this.pieChartData = []
+    this.expList.forEach(element => {
+        this.pieChartLabels.push(element.key + " Yr")
+        this.pieChartData.push(element.value)
+    });
+  }
+
   ngOnDestroy() {
-     this.subscription.unsubscribe();
+    if (this.subscription !== undefined){
+      this.subscription.unsubscribe();
+    }
+     
   }
 
   calculateSkills(resumeList){

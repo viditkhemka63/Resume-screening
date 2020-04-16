@@ -45,7 +45,9 @@ export class ShowResumeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription !== undefined){
+      this.subscription.unsubscribe();
+    }
   }
 
   isLoading(){

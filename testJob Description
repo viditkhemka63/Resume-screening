@@ -1,0 +1,30 @@
+As a part of Machine Learning team you will be responsible for applying machine learning to different business problems. You will be taking care of all steps starting from dataset preparation, feature generation, training algorithms and deploying to make predictions. Projects will range from simpler prediction problems with linear/logistic regression to complex problems in NLP and computer vision.
+
+Role & Responsibilities :
+
+- Collect and integrate data from various data sources. This could involve writing crawlers, connecting to databases to extracting data.
+
+- Create datasets for training algorithms. This will involve writing scripts to join different structured and unstructured datasets, create features supporting hypothesis.
+
+- Training Machine learning algorithms, perform iterative experiments with different techniques and features to discover best performing algorithm.
+
+- Collaborate with data engineering team to create data pipelines for regular feed into trained algorithms to make predictions. You will need to ensure data feeds are consistent with features used during training algorithms.
+
+- Monitor algorithm performance and suggest measures for improvement.
+
+- Document your work starting with data collection, feature documentation, algorithm performance results.
+
+Technical skills
+
+ML libs: Python- Scikit, Tensorflow, Keras, NLP
+
+Cloud ML Platforms: Google ML, AWS ML, Azure ML
+
+Algorithms: Linear/Logistic Regression, Random Forest, SVM, Neural Network, CNN, RNN, LSTM
+
+Programming Languages: Python, SQL
+
+Experience: 1-3 years
+
+*************************************************************************************************************
+

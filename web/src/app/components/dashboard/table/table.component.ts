@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
@@ -25,15 +25,35 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class TableComponent implements OnInit {
 
+  @Input() Data;
   displayedColumns: string[] = ['position', 'name', 'email', 'phoneNo', 'performance'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.Data);
+    this.filterData();
     this.dataSource.sort = this.sort;
+  }
+
+  filterData(){
+    let temp = []
+    let count = 1
+    this.Data.forEach(element => {
+        temp.push({
+          position: count,
+          name: element.name,
+          email: element.name + '@gmail.com',
+          phoneNo: parseInt(element.total_experience) || 0,
+          performance: element.score * 100
+        })
+        count++;
+    });
+    this.Data =temp;
+    this.dataSource = new MatTableDataSource(this.Data);
   }
 
 }

@@ -11,7 +11,7 @@ def cosineSimilarity(x1, x2):
     return  spatial.distance.cosine(x1, x2)
 
 
-def getVector(array):
+def getVector(array, ids):
     myobj = {"sentences":array }
     data = json.dumps(myobj)
 
@@ -20,7 +20,10 @@ def getVector(array):
     x = requests.post(url, data = data)
     vector = x.json()['vector']
     for i in range(len(array)):
-        resultVec.append([array[i], vector[i]])
+        if i == 0:
+            resultVec.append([array[i], vector[i]])
+        else:
+            resultVec.append([ids[i-1], vector[i]])
 
     return resultVec
 
@@ -34,16 +37,21 @@ def get_neighbors(train, test_row, num_neighbors):
     
     neighbors = list()
     for i in range(num_neighbors):
-        neighbors.append(distances[i][0])
+        neighbors.append(distances[i])
     return neighbors
 
 
 def predict_classification(train, test_row, num_neighbors):
     neighbors = get_neighbors(train, test_row, num_neighbors)
-    output_values = [row[0] for row in neighbors]
-    return output_values
+    print(neighbors[1][1])
+    output_values = [row[0][0] for row in neighbors]
+    cosineList = [1 - row[1] for row in neighbors]
+    
+    result = [ [output_values[i], cosineList[i]] for i in range(len(output_values)) ]
+    
+    return result
 
 
-# sent = ['I love machine learning and covid-19 ', 'machine learning is fun', 'covid-19 is very dangerous', 'deep learning requires more data']
+# sent = ['I love machine learning', 'machine learning is fun', 'covid-19 is very dangerous', 'deep learning requires more data']
 # vec = getVector(sent)
 # print(predict_classification(vec[1:], vec[0], 2))
