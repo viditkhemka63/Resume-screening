@@ -14,4 +14,4 @@ tornado==6.0.3
 nltk==3.4.5
 pandas==0.25.1
 pdfminer==20191125
-tensorflow==2.1.0
+tensorflow==1.15.4
