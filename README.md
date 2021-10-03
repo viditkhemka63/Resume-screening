@@ -23,3 +23,4 @@ python3 app.py
 cd clustering
 python3 vector.py
 ```
+### Note: Download the model from https://tfhub.dev/google/universal-sentence-encoder/2 and store in /nlp/clustering/2/
